@@ -34,41 +34,41 @@ File `Display_Lib.h` đã tự động tích hợp các thư viện sau:
 - bool connectNTP();
 
 ## Các hàm hỗ trợ
-### **void checkOLED();**
+### void checkOLED();
 Kiểm tra kết nối với màn hình OLED có thành công hay không, nếu không sẽ dừng toàn bộ chương trình.
 
-### **void drawBitmap(const uint8_t* bitmap, int16_t x, int16_t y, int16_t width, int16_t height);**
+### void drawBitmap(const uint8_t* bitmap, int16_t x, int16_t y, int16_t width, int16_t height);
 Vẽ hình ảnh bitmap lên màn OLED với tọa độ `x`, `y`, chiều rộng `width`, chiều cao `height`.
 Ví dụ: void drawBitmap(bitmap, 0, 0, 128, 64);
 
-### **void displayConnectWifi(const char* ssid);**
+### void displayConnectWifi(const char* ssid);
 Hiển thị trên màn hình OLED quá trình chờ kết nối tới WiFi với tên `ssid`.
 
-### **void displayConnectedWifi();**
+### void displayConnectedWifi();
 Hiển thị thông báo đã kết nối thành công tới WiFi và hiển thị IP của ESP lên màn hình OLED.
 
-### **void connectWifi(const char* ssid, const char* pass);**
+### void connectWifi(const char* ssid, const char* pass);
 Kết nối tới WiFi có tên `ssid` và mật khẩu là `pass`. Nếu kết nối thành công sẽ hiển thị trạng thái kết nối.
 
-### **void checkWifi(const char* ssid, const char* pass);**
+### void checkWifi(const char* ssid, const char* pass);
 Kiểm tra trạng thái kết nối WiFi, nếu bị ngắt kết nối sẽ tự động kết nối lại tới WiFi cũ.
 
-### **void displayConnectingNTP();**
+### void displayConnectingNTP();
 Hiển thị trạng thái đang kết nối tới NTP Server để lấy thời gian thực.
 
-### **void displayConnectedNTP();**
+### void displayConnectedNTP();
 Hiển thị thông báo đã kết nối thành công tới NTP Server.
 
-### **void displayTime();**
+### void displayTime();
 Hiển thị thời gian thực lên phần header của màn hình OLED.
 
-### **void displayTimeSerial();**
+### void displayTimeSerial();
 Hiển thị thời gian trên Serial Monitor để kiểm tra.
 
-### **void updateTime();**
+### void updateTime();
 Cập nhật thời gian thực từ NTP Server.
 
-### **bool connectNTP();**
+### bool connectNTP();
 Kiểm tra và kết nối tới NTP Server để lấy thời gian thực.
 
 ## Sử dụng trong các dự án

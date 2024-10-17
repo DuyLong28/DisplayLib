@@ -1,0 +1,72 @@
+File "Display_Lib.h" sử dụng hiển thị trên OLED 128x64, cho ESP32 và ESP8266
+Sử dụng trong file ".ino" chỉ cần sử dụng lệnh sau:
+#include "Display_Lib.h"
+
+File ".h" chứa sẵn các thư viện sau:
+- <wire.h> thư viện cho màn OLED sử dụng I2C
+- <time.h> lấy dữ liệu thời gian thực qua NTP server
+- <Adafruit_GFX.h> hiển thị giao diện cho OLED
+- Tự động thêm thư viện <Wifi.h> hoặc <ESP8266WiFi.h> phù hợp với board mạch chọn nạp code.
+- Tự động chọn thư viện hiển thị OLED <Adafruit_SSD1306.h> hoặc <Adafruit_SH110X.h> phù hợp với driver của màn OLED sử dụng.
+
+Sơ đồ đấu nối OLED:
+- ESP32: SCL-22, SDA-21
+- ESP8266: SCL-5(D1), SDA-4(D2)
+
+Tổng hợp hàm sử dụng:
+- void checkOLED();
+- void drawBitmap(const uint8_t* bitmap, int16_t x, int16_t y, int16_t width, int16_t height);
+- void displayConnectWifi(const char* ssid);
+- void displayConnectedWifi();
+- void connectWifi(const char* ssid, const char* pass);
+- void checkWifi(const char* ssid, const char* pass);
+- void displayConnectingNTP();
+- void displayConnectedNTP();
+- void displayTime();
+- void displayTimeSerial();
+- void updateTime();
+- bool connectNTP();
+
+Mục đích hàm:
+
+void checkOLED();
+	Kiểm tra kết nối với màn hình OLED có thành công hay không, nếu không sẽ dừng toàn bộ chương trình
+
+void drawBitmap(const uint8_t* bitmap, int16_t x, int16_t y, int16_t width, int16_t height);
+	Vẽ hình ảnh bitmap lên màn OLED với tọa độ x, y, chiều rộng width, chiều cao height
+	Hàm mẫu: void drawBitmap(bitmap, 0, 0, 128, 64);
+
+void displayConnectWifi(const char* ssid);
+	Chứa header: DisableWifi
+	Màn hình OLED chờ kết nối tới wifi có tên "ssid"
+
+void displayConnectedWifi();
+	Chứa header: EnableWifi
+	Màn hình hiển thị đã kết nối tới wifi
+	In IP của ESP lên màn hình
+
+void connectWifi(const char* ssid, const char* pass);
+	Hàm kết nối tới wifi có tên "ssid" và mật khẩu là "pass"
+	Nếu đang kết nối sẽ chạy hàm displayConnectWifi(const char* ssid);
+	Kết nối thành công sẽ chạy hàm displayConnectedWifi();
+
+void checkWifi(const char* ssid, const char* pass);
+	Kiểm tra kết nối wifi, nếu bị ngắt kết nối sẽ tự động cố gắng kết nối lại tới wifi cũ
+
+void displayConnectingNTP();
+	Sau khi kết nối wifi thành công, sẽ kết nối tới NTP Server lấy thời gian thực. Hiển thị đang kết nối tới NTP Server
+
+void displayConnectedNTP();
+	Hiển thị đã kết nối tới NTP Server thành công
+
+void displayTime();
+	Hiển thị thời gian lên phần header trên màn OLED
+
+void displayTimeSerial();
+	Hiển thị thời gian trên Serial để kiểm tra
+
+void updateTime();
+	Cập nhật thời gian thực
+
+bool connectNTP();
+	Cấu hình kiểm tra quá trình kết nối tới NTP Server

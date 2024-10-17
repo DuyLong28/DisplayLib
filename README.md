@@ -33,21 +33,19 @@ File `Display_Lib.h` đã tự động tích hợp các thư viện sau:
 - void updateTime();
 - bool connectNTP();
 
-## Các hàm hỗ trợ
+## Tính năng các hàm
 ### void checkOLED();
 Kiểm tra kết nối với màn hình OLED có thành công hay không, nếu không sẽ dừng toàn bộ chương trình.
 
 ### void drawBitmap(const uint8_t* bitmap, int16_t x, int16_t y, int16_t width, int16_t height);
 Vẽ hình ảnh bitmap lên màn OLED với tọa độ `x`, `y`, chiều rộng `width`, chiều cao `height`.
-Ví dụ: void drawBitmap(bitmap, 0, 0, 128, 64);
+Ví dụ: `void drawBitmap(bitmap, 0, 0, 128, 64);`
 
 ### void displayConnectWifi(const char* ssid);
 Hiển thị trên màn hình OLED quá trình chờ kết nối tới WiFi với tên `ssid`.
-<img src="Bitmap Picture/Header NoWifi 128x12.bmp?raw=true" width="500px"><br/>
 
 ### void displayConnectedWifi();
 Hiển thị thông báo đã kết nối thành công tới WiFi và hiển thị IP của ESP lên màn hình OLED.
-<img src="Bitmap Picture/Header 128x12.bmp?raw=true" width="500px"><br/>
 
 ### void connectWifi(const char* ssid, const char* pass);
 Kết nối tới WiFi có tên `ssid` và mật khẩu là `pass`. Nếu kết nối thành công sẽ hiển thị trạng thái kết nối.
@@ -73,5 +71,13 @@ Cập nhật thời gian thực từ NTP Server.
 ### bool connectNTP();
 Kiểm tra và kết nối tới NTP Server để lấy thời gian thực.
 
-## Sử dụng trong các dự án
-Bạn có thể sử dụng thư viện này để phát triển các dự án IoT, theo dõi thời gian thực và hiển thị thông tin lên màn OLED một cách dễ dàng với các hàm đã cung cấp.
+## Ảnh Bitmap được khai báo
+### Header disconnect wifi
+<img src="Bitmap Picture/Header NoWifi 128x12.bmp?raw=true" width="300px"><br/>
+### Header connected wifi
+<img src="Bitmap Picture/Header 128x12.bmp?raw=true" width="300px"><br/>
+### Robot face
+| Normal | Funny | NoFeel | NoEye | Sad | Angry |
+|--------|-------|--------|-------|-----|-------|
+| <img src="Bitmap Picture/Robot Face/Normal.bmp?raw=true" width="200px"> | <img src="Bitmap Picture/Robot Face/Funny.bmp?raw=true" width="200px"> | <img src="Bitmap Picture/Robot Face/NoFeel.bmp?raw=true" width="200px"> | <img src="Bitmap Picture/Robot Face/NoEye.bmp?raw=true" width="200px"> | <img src="Bitmap Picture/Robot Face/Sad.bmp?raw=true" width="200px"> | <img src="Bitmap Picture/Robot Face/Angry.bmp?raw=true" width="200px"> |
+

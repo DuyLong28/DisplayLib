@@ -1,8 +1,8 @@
 #include "Header.h"
 
 // Thông tin wifi
-const char* ssid = "DuyLong";
-const char* pass = "12341234";
+const char* ssid = "YOUR_SSID";
+const char* pass = "YOUR_PASS";
 
 void setup() {
   Serial.begin(115200);

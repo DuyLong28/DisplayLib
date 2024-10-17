@@ -5,7 +5,7 @@ Thư viện `Display_Lib.h` hỗ trợ hiển thị trên màn hình OLED 128x64
 
 ## Hướng dẫn sử dụng
 Chỉ cần thêm dòng sau vào file `.ino` để sử dụng thư viện:
-#include "Display_Lib.h"
+`#include "Display_Lib.h"`
 
 ## Các thư viện tích hợp
 File `Display_Lib.h` đã tự động tích hợp các thư viện sau:

@@ -43,9 +43,11 @@ Ví dụ: void drawBitmap(bitmap, 0, 0, 128, 64);
 
 ### void displayConnectWifi(const char* ssid);
 Hiển thị trên màn hình OLED quá trình chờ kết nối tới WiFi với tên `ssid`.
+<img src="Bitmap Picture/Header NoWifi 128x12.bmp?raw=true" width="500px"><br/>
 
 ### void displayConnectedWifi();
 Hiển thị thông báo đã kết nối thành công tới WiFi và hiển thị IP của ESP lên màn hình OLED.
+<img src="Bitmap Picture/Header 128x12.bmp?raw=true" width="500px"><br/>
 
 ### void connectWifi(const char* ssid, const char* pass);
 Kết nối tới WiFi có tên `ssid` và mật khẩu là `pass`. Nếu kết nối thành công sẽ hiển thị trạng thái kết nối.

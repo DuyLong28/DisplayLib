@@ -1,4 +1,4 @@
-# Hướng dẫn sử dụng thư viện Display_Lib.h cho OLED 128x64 trên ESP32 và ESP8266
+# Hướng dẫn sử dụng thư viện DisplayLib.h cho OLED 128x64 trên ESP32 và ESP8266
 
 ## Giới thiệu
 Thư viện `DisplayLib.h` hỗ trợ hiển thị trên màn hình OLED 128x64, sử dụng cho các dòng vi điều khiển ESP32 và ESP8266. Thư viện tích hợp sẵn các thư viện cần thiết và cung cấp nhiều hàm hỗ trợ để kết nối WiFi, NTP Server, và hiển thị thông tin lên màn hình OLED.

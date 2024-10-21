@@ -1,19 +1,20 @@
 # Hướng dẫn sử dụng thư viện Display_Lib.h cho OLED 128x64 trên ESP32 và ESP8266
 
 ## Giới thiệu
-Thư viện `Display_Lib.h` hỗ trợ hiển thị trên màn hình OLED 128x64, sử dụng cho các dòng vi điều khiển ESP32 và ESP8266. Thư viện tích hợp sẵn các thư viện cần thiết và cung cấp nhiều hàm hỗ trợ để kết nối WiFi, NTP Server, và hiển thị thông tin lên màn hình OLED.
+Thư viện `DisplayLib.h` hỗ trợ hiển thị trên màn hình OLED 128x64, sử dụng cho các dòng vi điều khiển ESP32 và ESP8266. Thư viện tích hợp sẵn các thư viện cần thiết và cung cấp nhiều hàm hỗ trợ để kết nối WiFi, NTP Server, và hiển thị thông tin lên màn hình OLED.
 
 ## Hướng dẫn sử dụng
-Chỉ cần thêm dòng sau vào file `.ino` để sử dụng thư viện:
-`#include "Display_Lib.h"`
+Tải file nén DisplayLib.zip về và thêm vào thư viện Arduino của bạn `Mở Arduino IDE, chọn Sketch -> Include Library -> Add .ZIP Library...`
+Sau khi thêm thành công chỉ cần thêm dòng sau vào file `.ino` để sử dụng thư viện:
+`#include "DisplayLib.h"`
 
 ## Các thư viện tích hợp
-File `Display_Lib.h` đã tự động tích hợp các thư viện sau:
-- `<wire.h>`: Thư viện cho màn OLED sử dụng giao tiếp I2C.
-- `<time.h>`: Lấy dữ liệu thời gian thực qua NTP server.
-- `<Adafruit_GFX.h>`: Thư viện hỗ trợ giao diện hiển thị cho OLED.
-- `<Wifi.h>` hoặc `<ESP8266WiFi.h>`: Tự động thêm thư viện phù hợp với loại board mạch.
-- `<Adafruit_SSD1306.h>` hoặc `<Adafruit_SH110X.h>`: Tự động chọn thư viện hiển thị OLED phù hợp với driver màn hình OLED.
+File `DisplayLib.h` đã tự động tích hợp các thư viện sau:
+- [`<wire.h>`](https://github.com/codebendercc/arduino-library-files/blob/master/libraries/Wire/Wire.h): Thư viện cho màn OLED sử dụng giao tiếp I2C.
+- [`<time.h>`](https://github.com/ebrevdo/arduino/blob/master/libraries/Time/Time.h): Lấy dữ liệu thời gian thực qua NTP server.
+- [`<Adafruit_GFX.h>`](https://github.com/adafruit/Adafruit-GFX-Library): Thư viện hỗ trợ giao diện hiển thị cho OLED.
+- [`<Wifi.h>`](https://github.com/espressif/arduino-esp32/blob/master/libraries/WiFi/src/WiFi.h) hoặc [`<ESP8266WiFi.h>`](https://github.com/esp8266/Arduino/blob/master/libraries/ESP8266WiFi/src/ESP8266WiFi.h): Tự động thêm thư viện phù hợp với loại board mạch.
+- [`<Adafruit_SSD1306.h>`](https://github.com/adafruit/Adafruit_SSD1306) hoặc [`<Adafruit_SH110X.h>`](https://github.com/adafruit/Adafruit_SH110x): Tự động chọn thư viện hiển thị OLED phù hợp với driver màn hình OLED.
 
 ### Sơ đồ đấu nối OLED
 - **ESP32**: SCL-22, SDA-21
@@ -25,6 +26,7 @@ File `Display_Lib.h` đã tự động tích hợp các thư viện sau:
 - void displayConnectWifi(const char* ssid);
 - void displayConnectedWifi();
 - void connectWifi(const char* ssid, const char* pass);
+- void connectedWifi(const char* ssid);
 - void checkWifi(const char* ssid, const char* pass);
 - void displayConnectingNTP();
 - void displayConnectedNTP();
@@ -48,7 +50,10 @@ Hiển thị trên màn hình OLED quá trình chờ kết nối tới WiFi vớ
 Hiển thị thông báo đã kết nối thành công tới WiFi và hiển thị IP của ESP lên màn hình OLED.
 
 ### void connectWifi(const char* ssid, const char* pass);
-Kết nối tới WiFi có tên `ssid` và mật khẩu là `pass`. Nếu kết nối thành công sẽ hiển thị trạng thái kết nối.
+Kết nối tới WiFi có tên `ssid` và mật khẩu là `pass`.
+
+### void connectedWifi();
+Thông báo đã kết nối Wifi thành công.
 
 ### void checkWifi(const char* ssid, const char* pass);
 Kiểm tra trạng thái kết nối WiFi, nếu bị ngắt kết nối sẽ tự động kết nối lại tới WiFi cũ.

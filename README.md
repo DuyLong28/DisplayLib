@@ -2,6 +2,7 @@
 
 ## Giới thiệu
 Thư viện `DisplayLib.h` hỗ trợ hiển thị trên màn hình OLED 128x64, sử dụng cho các dòng vi điều khiển ESP32 và ESP8266. Thư viện tích hợp sẵn các thư viện cần thiết và cung cấp nhiều hàm hỗ trợ để kết nối WiFi, NTP Server, và hiển thị thông tin lên màn hình OLED.
+Version 2.0.0 đã thêm tính năng Scan Wifi và hiển thị lên web server.
 
 ## Hướng dẫn sử dụng
 Tải file nén DisplayLib.zip về và thêm vào thư viện Arduino của bạn `Mở Arduino IDE, chọn Sketch -> Include Library -> Add .ZIP Library...`
@@ -15,6 +16,8 @@ File `DisplayLib.h` đã tự động tích hợp các thư viện sau:
 - [`<Adafruit_GFX.h>`](https://github.com/adafruit/Adafruit-GFX-Library): Thư viện hỗ trợ giao diện hiển thị cho OLED.
 - [`<Wifi.h>`](https://github.com/espressif/arduino-esp32/blob/master/libraries/WiFi/src/WiFi.h) hoặc [`<ESP8266WiFi.h>`](https://github.com/esp8266/Arduino/blob/master/libraries/ESP8266WiFi/src/ESP8266WiFi.h): Tự động thêm thư viện phù hợp với loại board mạch.
 - [`<Adafruit_SSD1306.h>`](https://github.com/adafruit/Adafruit_SSD1306) hoặc [`<Adafruit_SH110X.h>`](https://github.com/adafruit/Adafruit_SH110x): Tự động chọn thư viện hiển thị OLED phù hợp với driver màn hình OLED.
+- [`WebServer.h`](https://github.com/espressif/arduino-esp32/blob/master/libraries/WebServer/src/WebServer.h) và [`ESP8266WebServer.h`](https://github.com/esp8266/Arduino/blob/master/libraries/ESP8266WebServer/src/ESP8266WebServer.h): Thư viện cấu hình webserver cho ESP.
+
 
 ### Sơ đồ đấu nối OLED
 - **ESP32**: SCL-22, SDA-21
@@ -34,6 +37,9 @@ File `DisplayLib.h` đã tự động tích hợp các thư viện sau:
 - void displayTimeSerial();
 - void updateTime();
 - bool connectNTP();
+- void wifiHotspot(const char* ssidAP, const char* passAP);
+- void setupServer();
+- void handleClient();
 
 ## Tính năng các hàm
 ### void checkOLED();
@@ -75,6 +81,15 @@ Cập nhật thời gian thực từ NTP Server.
 
 ### bool connectNTP();
 Kiểm tra và kết nối tới NTP Server để lấy thời gian thực.
+
+### void wifiHotspot(const char* ssidAP, const char* passAP);
+Chuyển chế độ ESP sang AP để phát 1 wifi có tên `ssidAP` với mật khẩu `passAP` để Client có thể kết nối tới Webserver.
+
+### void setupServer();
+Cấu hình thiết lập Webserver.
+
+### void handleClient();
+Kiểm tra các yêu cầu từ Client
 
 ## Ảnh Bitmap được khai báo
 ### Header disconnect wifi
